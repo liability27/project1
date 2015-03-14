@@ -1,5 +1,8 @@
-﻿@{
-    ViewBag.Title = "Index";
-}
+﻿@model MvcApplication.Models.chartData
 
-<h2>Index</h2>
+@{
+    ViewBag.Title = "Home";
+}
+<div id="dateSelect">
+    @Html.Partial("DateSelect", Model)
+</div>

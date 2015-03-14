@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="marketData">
+  <DataContextMoniker Name="/marketDataDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5a4ecf78-c6e1-4876-b5fb-48016c43c481" absoluteBounds="3.5, 0.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/marketDataDataContext/LWA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f0796b7d-87ee-426b-b11c-0af89456e6bb" absoluteBounds="3.515, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="20f24f44-7eeb-445e-9c16-5b390f35ff0a" absoluteBounds="6.25, 1, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/marketDataDataContext/MaxSMP" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f73d84f7-a546-48a6-9612-83aeccceb760" absoluteBounds="6.265, 1.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="67ae0c42-fa0a-4919-8af2-8bbeb45859cd" absoluteBounds="3.75, 3.375, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/marketDataDataContext/MinSMP" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6d4547e6-5c46-4a3a-9040-ab2476ef10a2" absoluteBounds="3.765, 3.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0c0e9777-810d-4e74-b212-be92409607fe" absoluteBounds="6.375, 3.375, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/marketDataDataContext/Shadow_SMP" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c2220b3a-45e7-4e67-90ae-3bd72965bf32" absoluteBounds="6.39, 3.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="731aab92-0ed6-4f2d-b5d7-d6af9450892d" absoluteBounds="5.375, 3, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/marketDataDataContext/SMP_Load" />
+      <nestedChildShapes>
+        <elementListCompartment Id="38ec03d6-5154-42ea-a380-a52b1a7dc116" absoluteBounds="5.39, 3.46, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

@@ -1,0 +1,20 @@
+﻿@model MvcApplication.Models.chartData
+@using (Html.BeginForm(Model.seriesName, "Home", FormMethod.Post))
+{
+    if (!Model.day) 
+    { 
+        @Html.Label("startDate", "Date From: ")
+        @Html.TextBox("startDate", Model.startDate.ToShortDateString(), new { @class = "datepicker", type = "text", id ="start" })
+
+        @Html.Label("endDate", "Date To: ")
+        @Html.TextBox("endDate", Model.endDate.ToShortDateString(), new { @class = "datepicker", type = "text", id="end"})
+    }
+    else
+    {
+        @Html.Label("startDate", "Date From: ")
+        @Html.TextBox("startDate", Model.startDate.ToShortDateString(), new { @class = "datepicker", type = "text", id = "start" })
+    
+    }
+    <input type="submit" name="Submit" value="Submit" />
+}
+
