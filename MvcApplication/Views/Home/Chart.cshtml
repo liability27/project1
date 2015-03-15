@@ -1,7 +1,7 @@
 ﻿@model MvcApplication.Models.chartData
 
 @{
-    ViewBag.Title = Model.seriesName;
+    ViewBag.Title = Model.chartTitle;
 }
 <script>
     $(function () {
@@ -16,23 +16,15 @@
                 labels: { rotation: -45 },
                 categories: [@Html.Raw(string.Join(",",@Model.dates.ToArray()))]
             },
-            yAxis: [{
-                title: {
-                    text: '@Html.Raw(Model.axisTitle)'
-                }
-            }],
-            series: [{
-                name: '@Model.seriesName',
-                data: [@string.Join(",", @Model.series1.ToArray())]
-            }, {
-                type: 'spline', name: 'Seven Day @Model.seriesName',
-                data: [@string.Join(",", @Model.series2.ToArray())]
-            }]
+            yAxis: @Html.Raw(Json.Encode(Model.yAxis)),
+            series: @Html.Raw(Json.Encode(Model.series))
         });
 
     });
 
 </script>
 <div id="dateSelect">
-    @Html.Partial("DateSelect",Model)
+    <div style="display:inline-block">
+        @Html.Partial("DateSelect", Model)
+    </div>
 </div>

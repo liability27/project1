@@ -8,14 +8,13 @@ namespace MvcApplication.Models
     public class chartData
     {
         public List<string> dates = new List<string>();
-        public List<string> series1 = new List<string>();
-        public List<string> series2 = new List<string>();
+        public List<series> series = new List<series>();
+        public List<yAxis> yAxis = new List<yAxis>();
         public string chartTitle="";
-        public string axisTitle = "";
+        
         public string seriesName = "";
         public DateTime startDate;
         public DateTime endDate;
-        public Boolean day = false;
-        public string addedScript = "";
+        public Boolean day = false;public string addedScript = "";
     }
 }

@@ -120,6 +120,9 @@
     </Compile>
     <Compile Include="Models\chartData.cs" />
     <Compile Include="Models\range.cs" />
+    <Compile Include="Models\series.cs" />
+    <Compile Include="Models\title.cs" />
+    <Compile Include="Models\yAxis.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -26,7 +26,6 @@ namespace MvcApplication.Controllers
         public ActionResult Index(string startDate,string endDate)
         {
             values.startDate = DateTime.Parse(startDate);
-            //values.viewSelect.Add("LWA",LWA());
             values.endDate = DateTime.Parse(endDate);
             
             return View("Index",values);
@@ -40,19 +39,25 @@ namespace MvcApplication.Controllers
             }
             marketDataDataContext data = new marketDataDataContext();
             var query = from LWA in data.LWAs where LWA.Date >= values.startDate where LWA.Date <= values.endDate select LWA;
-            values.axisTitle = "LWA (€/MWH)";
+            
             values.chartTitle = "Load Weighted Average";
             values.seriesName = "LWA";
+            
+            values.series.Add(new Models.series("LWA"));
 
+            values.series.Add(new Models.series("Seven Day LWA"));
+            values.series[1].type = "spline";
+
+            values.yAxis.Add(new Models.yAxis("LWA (€/MWH)"));
             foreach (var s in query)
             {
-                values.dates.Add("'" + s.Date.ToShortDateString() + "'");
-                values.series1.Add(s.Lwa1.ToString());
-                values.series2.Add(s.SevenDayLWA.ToString());
+                values.dates.Add('"'+s.Date.ToShortDateString()+'"');
+                values.series[0].data.Add(s.Lwa1);
+                values.series[1].data.Add(s.SevenDayLWA);
             }
             return View("Chart", values);
         }
-        public ActionResult Max_SMP(string startDate,string endDate)
+        public ActionResult Max_SMP(string startDate, string endDate)
         {
             if (Request.HttpMethod == "POST")
             {
@@ -61,16 +66,24 @@ namespace MvcApplication.Controllers
             }
             marketDataDataContext data = new marketDataDataContext();
             var query = from smp in data.MaxSMPs where smp.Date >= values.startDate where smp.Date <= values.endDate select smp;
-            values.axisTitle = "System Marginal Price - SMP (€/MWh)";
+            
             values.chartTitle = "Maximum System Marginal Price (SMP)";
             values.seriesName = "Max_SMP";
 
+            values.yAxis.Add(new Models.yAxis("System Marginal Price - SMP (€/MWh)"));
+
+            values.series.Add(new Models.series("Max SMP"));
+
+            values.series.Add(new Models.series("Seven Day Max SMP"));
+            values.series[1].type = "spline";
+
+
             foreach (var s in query)
             {
-                values.dates.Add("'" + s.Date.ToShortDateString() + "'");
-                values.series1.Add(s.MaxSMP1.ToString());
-                values.series2.Add(s.SevenDayMaxSMP.ToString());
-            } 
+                values.dates.Add('"' + s.Date.ToShortDateString() + '"');
+                values.series[0].data.Add(s.MaxSMP1);
+                values.series[1].data.Add(s.SevenDayMaxSMP);
+            }
             return View("Chart", values);
         }
         public ActionResult Min_SMP(string startDate, string endDate)
@@ -82,15 +95,22 @@ namespace MvcApplication.Controllers
             }
             marketDataDataContext data = new marketDataDataContext();
             var query = from smp in data.MinSMPs where smp.Date >= values.startDate where smp.Date <= values.endDate select smp;
-            values.axisTitle = "System Marginal Price - SMP (€/MWh)";
+            
             values.chartTitle = "Minimum System Marginal Price (SMP)";
             values.seriesName = "Min_SMP";
 
+            values.yAxis.Add(new Models.yAxis("System Marginal Price - SMP (€/MWh)"));
+
+            values.series.Add(new Models.series("Min SMP"));
+
+            values.series.Add(new Models.series("Seven Day Min SMP"));
+            values.series[1].type = "spline";
+
             foreach (var s in query)
             {
-                values.dates.Add("'" + s.Date.ToShortDateString() + "'");
-                values.series1.Add(s.MinSMP1.ToString());
-                values.series2.Add(s.SevenDayMinSMP.ToString());
+                values.dates.Add('"' + s.Date.ToShortDateString() + '"');
+                values.series[0].data.Add(s.MinSMP1);
+                values.series[1].data.Add(s.SevenDayMinSMP);
             }
             return View("Chart", values);
         }
@@ -103,15 +123,24 @@ namespace MvcApplication.Controllers
             }
             marketDataDataContext data = new marketDataDataContext();
             var query = from smp in data.Shadow_SMPs where smp.Date >= values.startDate where smp.Date < values.endDate select smp;
-            values.axisTitle = "SMP / Shadow Price (€/MWh)";
+            
             values.chartTitle = "Shadow Price and System Marginal Price (SMP)";
             values.seriesName = "Shadow_SMP";
             values.day = true;
+
+            values.yAxis.Add(new Models.yAxis("SMP / Shadow Price (€/MWh)"));
+
+            values.series.Add(new Models.series("SMP"));
+            values.series[0].type = "spline";
+
+            values.series.Add(new Models.series("Shadow Price"));
+            values.series[1].type = "spline";
+        
             foreach (var s in query)
             {
-                values.dates.Add("'" + s.Date.ToShortTimeString() + "'");
-                values.series1.Add(s.SMP.ToString());
-                values.series2.Add(s.ShadowPrice.ToString());
+                values.dates.Add('"' + s.Date.ToShortTimeString() + '"');
+                values.series[0].data.Add(s.SMP);
+                values.series[1].data.Add(s.ShadowPrice);
             }
             return View("Chart", values);
         }
@@ -123,22 +152,29 @@ namespace MvcApplication.Controllers
                 values.endDate = DateTime.Parse(startDate).AddDays(1);
             }
             marketDataDataContext data = new marketDataDataContext();
-            var query = from smp in data.Shadow_SMPs where smp.Date >= values.startDate where smp.Date < values.endDate select smp;
-            values.axisTitle = "SMP / Shadow Price (€/MWh)";
-            values.chartTitle = "Shadow Price and System Marginal Price (SMP)";
+            var query = from smp in data.SMP_Loads where smp.Date >= values.startDate where smp.Date < values.endDate select smp;
+            
+            values.chartTitle = "SMP vs Load";
             values.seriesName = "Load_SMP";
             values.day = true;
+
+            values.yAxis.Add(new Models.yAxis("System Load (MW)"));
+
+            values.yAxis.Add(new Models.yAxis("SMP (€/MWh)"));
+            values.yAxis[1].opposite = true;
+
+            values.series.Add(new Models.series("System Load"));
+
+            values.series.Add(new Models.series("SMP"));
+            values.series[1].type = "spline";
+            values.series[1].yAxis = 1;
+
             foreach (var s in query)
             {
                 values.dates.Add("'" + s.Date.ToShortTimeString() + "'");
-                values.series1.Add(s.SMP.ToString());
-                values.series2.Add(s.ShadowPrice.ToString());
-            }
-            values.axisTitle += @"'}
-        }, {
-            opposite: true,
-            title: {
-                text: 'SMP (€/MWh)";
+                values.series[1].data.Add(s.SMP);
+                values.series[0].data.Add(s.SystemLoad);
+            }   
             return View("Chart", values);
         }
         public ActionResult Chart(Models.chartData values)
