@@ -121,6 +121,7 @@ namespace MvcApplication.Controllers
                 values.startDate = DateTime.Parse(startDate);
                 values.endDate = DateTime.Parse(startDate).AddDays(1);
             }
+            values.endDate = values.startDate.AddDays(1);
             marketDataDataContext data = new marketDataDataContext();
             var query = from smp in data.Shadow_SMPs where smp.Date >= values.startDate where smp.Date < values.endDate select smp;
             
@@ -151,6 +152,8 @@ namespace MvcApplication.Controllers
                 values.startDate = DateTime.Parse(startDate);
                 values.endDate = DateTime.Parse(startDate).AddDays(1);
             }
+            values.endDate = values.startDate.AddDays(1);
+
             marketDataDataContext data = new marketDataDataContext();
             var query = from smp in data.SMP_Loads where smp.Date >= values.startDate where smp.Date < values.endDate select smp;
             

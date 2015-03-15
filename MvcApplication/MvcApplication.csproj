@@ -151,6 +151,7 @@
     <Content Include="Content\Images\favicon-32x32.png" />
     <Content Include="Content\Images\favicon-96x96.png" />
     <Content Include="Content\Images\favicon.ico" />
+    <Content Include="Content\Images\fresh_snow_%402X.png" />
     <Content Include="Content\Images\logo.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
