@@ -19,16 +19,16 @@ namespace MvcApplication.Controllers
 
         public ActionResult Index()
         {
+            marketDataDataContext con = new marketDataDataContext();
+
+            List<IQueryable> query = new List<IQueryable>();
+            values.dates.Add((from dates in con.LWAs select dates.Date).Max().ToShortDateString());
+            values.dates.Add((from dates in con.MaxSMPs select dates.Date).Max().ToShortDateString());
+            values.dates.Add((from dates in con.MinSMPs select dates.Date).Max().ToShortDateString());
+            values.dates.Add((from dates in con.Shadow_SMPs select dates.Date).Max().AddDays(-1).ToShortDateString());
+            values.dates.Add((from dates in con.SMP_Loads select dates.Date).Max().AddDays(-1).ToShortDateString());
+
             return View(values);
-        }
-        
-        [HttpPost]
-        public ActionResult Index(string startDate,string endDate)
-        {
-            values.startDate = DateTime.Parse(startDate);
-            values.endDate = DateTime.Parse(endDate);
-            
-            return View("Index",values);
         }
         public ActionResult LWA(string startDate,string endDate)
         {
@@ -179,6 +179,31 @@ namespace MvcApplication.Controllers
                 values.series[0].data.Add(s.SystemLoad);
             }   
             return View("Chart", values);
+        }
+        public ActionResult updateLWA()
+        {
+            Program.updateLWA();
+            return RedirectToAction("Index");
+        }
+        public ActionResult updateMaxSMP()
+        {
+            Program.updateMaxSMP();
+            return RedirectToAction("Index");
+        }
+        public ActionResult updateMinSMP()
+        {
+            Program.updateMinSMP();
+            return RedirectToAction("Index");
+        }
+        public ActionResult updateShadow_Smp()
+        {
+            Program.updateShadow_Smp();
+            return RedirectToAction("Index");
+        }
+        public ActionResult updateSmp_Load()
+        {
+            Program.updateSmp_Load();
+            return RedirectToAction("Index");
         }
         public ActionResult Chart(Models.chartData values)
         {

@@ -40,57 +40,57 @@
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
             if (Model.seriesName == "Index")
-            {<input type="submit" name="Submit" value="Home" id="selected" />}
+            {<input type="submit" name="Submit" value="HOME" id="selected" style="background-color:darkgray"/>}
             else
-            {<input type="submit" name="Submit" value="Home" />}
+            {<input type="submit" name="Submit" value="HOME" />}
         }
         @using (Html.BeginForm("LWA", "Home", FormMethod.Post))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
-            if (Model.seriesName == "LWA"){<input type="submit" name="Submit" value="LWA" id="selected"/>}
-            else{<input type="submit" name="Submit" value="LWA" />}
+            if (Model.seriesName == "LWA")
+            {<input type="submit" name="Submit" value="LWA" id="selected" style="background-color:darkgray" />}
+            else
+            {<input type="submit" name="Submit" value="LWA" />}
         }
         @using (Html.BeginForm("Max_SMP", "Home", FormMethod.Post))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
             if (Model.seriesName == "Max_SMP")
-            {<input type="submit" name="Submit" value="Max SMP" id="selected" />}
+            {<input type="submit" name="Submit" value="MAX SMP" id="selected" style="background-color:darkgray" />}
             else
-            {<input type="submit" name="Submit" value="Max SMP" />}
+            {<input type="submit" name="Submit" value="MAX SMP" />}
         }
         @using (Html.BeginForm("Min_SMP", "Home", FormMethod.Post))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
             if (Model.seriesName == "Min_SMP")
-            {<input type="submit" name="Submit" value="Min SMP" id="selected" />}
+            {<input type="submit" name="Submit" value="MIN SMP" id="selected" style="background-color:darkgray" />}
             else
-            {<input type="submit" name="Submit" value="Min SMP" />}
+            {<input type="submit" name="Submit" value="MIN SMP" />}
         }
         @using (Html.BeginForm("Shadow_SMP", "Home", FormMethod.Post))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
             if (Model.seriesName == "Shadow_SMP")
-            {<input type="submit" name="Submit" value="Shadow vs SMP" id="selected" />}
+            {<input type="submit" name="Submit" value="SHADOW VS SMP" id="selected" style="background-color:darkgray" />}
             else
-            {<input type="submit" name="Submit" value="Shadow vs SMP" />}
+            {<input type="submit" name="Submit" value="SHADOW VS SMP" />}
         }
         @using (Html.BeginForm("Load_SMP", "Home", FormMethod.Post))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
             if (Model.seriesName == "Load_SMP")
-            {<input type="submit" name="Submit" value="Load vs SMP" id="selected" />}
+            {<input type="submit" name="Submit" value="LOAD VS SMP" id="selected" style="background-color:darkgray" />}
             else
-            {<input type="submit" name="Submit" value="Load vs SMP" />}
+            {<input type="submit" name="Submit" value="LOAD VS SMP" />}
         }
     </div>
-    <br /><br />
     @RenderBody()
     <script>$(".datepicker").datepicker({dateFormat:'dd/mm/yy'});</script>
-    <div id="container"></div>
 </body>
 </html>

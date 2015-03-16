@@ -3,6 +3,21 @@
 @{
     ViewBag.Title = "Home";
 }
-<div id="dateSelect">
-    @Html.Partial("DateSelect", Model)
+<h2 style="width:80%; margin-left:auto; margin-right:auto">Data Base Status</h2>
+<div class="databaseStatus">
+    <div>
+        <p>LWA last data entry:</p>
+        <p>Max SMP last data entry:</p>
+        <p>Min SMP last data entry:</p>
+        <p>Shadow vs SMP last data entry:</p>
+        <p>Load vs SMP last data entry:</p>
+    </div>
+    <div>@foreach (var x in Model.dates) { <p>@x</p>}</div>
+    <div style="text-align:center">
+        <p>@Html.ActionLink("Update LWA", "updateLWA", "Home")</p>
+        <p>@Html.ActionLink("Update Max SMP", "updateMaxSMP", "Home")</p>
+        <p>@Html.ActionLink("Update Min SMP", "updateMinSMP", "Home")</p>
+        <p>@Html.ActionLink("Update Shadow vs SMP", "updateShadow_Smp", "Home") </p>
+        <p>@Html.ActionLink("Update Load vs SMP", "updateSmp_Load", "Home")</p>
+    </div>
 </div>
