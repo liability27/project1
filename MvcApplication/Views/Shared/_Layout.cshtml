@@ -3,94 +3,75 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <link rel="apple-touch-icon" sizes="57x57" href="/Content/Images/apple-touch-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/Content/Images/apple-touch-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/Content/Images/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/Content/Images/apple-touch-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/Content/Images/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/Content/Images/apple-touch-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/Content/Images/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/Content/Images/apple-touch-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/Content/Images/apple-touch-icon-180x180.png">
-    <link rel="icon" type="image/png" href="/Content/Images/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/Content/Images/android-chrome-192x192.png" sizes="192x192">
-    <link rel="icon" type="image/png" href="/Content/Images/favicon-96x96.png" sizes="96x96">
-    <link rel="icon" type="image/png" href="/Content/Images/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="/Content/Images/manifest.json">
-    <link rel="shortcut icon" href="/Content/Images/favicon.ico">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="msapplication-TileImage" content="/Content/Images/mstile-144x144.png">
-    <meta name="msapplication-config" content="/Content/Images/browserconfig.xml">
-    <meta name="theme-color" content="#ffffff">
-
-
+    <link rel="shortcut icon" href="@Url.Content("~/Content/Images/logofavicon.png")"/>
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/Content/themes/base/datepicker.css" />
+    
+    <link rel="stylesheet" href="@Url.Content("~/Content/bootstrap.min.css")" />
+    <link rel="stylesheet" href="@Url.Content("~/Content/themes/base/datepicker.css")" />
+    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
     <script src="http://code.highcharts.com/highcharts.js"></script>
-    <script type="text/javascript" src="~/Scripts/jquery-ui-1.11.3.js"></script>
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery-ui-1.11.3.js")"></script>
 </head>
-<body>
-    <div id="head" ><a href="/"><img src="@Url.Content("~/Content/Images/logo.png")"/></a><h1>ARK Energy Electricity Market Analyser</h1></div>
+<body>    
+    <div id="head" ><a href="@Url.Content("~/")"><img src="@Url.Content("~/Content/Images/logo.png")"/></a><h1>Electricity Market Analyser</h1></div>
     <div id="nav">  
         @using (Html.BeginForm("Index", "Home", FormMethod.Post))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
             if (Model.seriesName == "Index")
-            {<input type="submit" name="Submit" value="Home" id="selected" />}
+            {<input type="submit" name="Submit" value="HOME" id="selected" style="background-color:darkgray"/>}
             else
-            {<input type="submit" name="Submit" value="Home" />}
+            {<input type="submit" name="Submit" value="HOME" />}
         }
         @using (Html.BeginForm("LWA", "Home", FormMethod.Post))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
-            if (Model.seriesName == "LWA"){<input type="submit" name="Submit" value="LWA" id="selected"/>}
-            else{<input type="submit" name="Submit" value="LWA" />}
+            if (Model.seriesName == "LWA")
+            {<input type="submit" name="Submit" value="LWA" id="selected" style="background-color:darkgray" />}
+            else
+            {<input type="submit" name="Submit" value="LWA" />}
         }
         @using (Html.BeginForm("Max_SMP", "Home", FormMethod.Post))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
             if (Model.seriesName == "Max_SMP")
-            {<input type="submit" name="Submit" value="Max SMP" id="selected" />}
+            {<input type="submit" name="Submit" value="MAX SMP" id="selected" style="background-color:darkgray" />}
             else
-            {<input type="submit" name="Submit" value="Max SMP" />}
+            {<input type="submit" name="Submit" value="MAX SMP" />}
         }
         @using (Html.BeginForm("Min_SMP", "Home", FormMethod.Post))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
             if (Model.seriesName == "Min_SMP")
-            {<input type="submit" name="Submit" value="Min SMP" id="selected" />}
+            {<input type="submit" name="Submit" value="MIN SMP" id="selected" style="background-color:darkgray" />}
             else
-            {<input type="submit" name="Submit" value="Min SMP" />}
+            {<input type="submit" name="Submit" value="MIN SMP" />}
         }
         @using (Html.BeginForm("Shadow_SMP", "Home", FormMethod.Post))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
             if (Model.seriesName == "Shadow_SMP")
-            {<input type="submit" name="Submit" value="Shadow vs SMP" id="selected" />}
+            {<input type="submit" name="Submit" value="SHADOW VS SMP" id="selected" style="background-color:darkgray" />}
             else
-            {<input type="submit" name="Submit" value="Shadow vs SMP" />}
+            {<input type="submit" name="Submit" value="SHADOW VS SMP" />}
         }
         @using (Html.BeginForm("Load_SMP", "Home", FormMethod.Post))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
             if (Model.seriesName == "Load_SMP")
-            {<input type="submit" name="Submit" value="Load vs SMP" id="selected" />}
+            {<input type="submit" name="Submit" value="LOAD VS SMP" id="selected" style="background-color:darkgray" />}
             else
-            {<input type="submit" name="Submit" value="Load vs SMP" />}
+            {<input type="submit" name="Submit" value="LOAD VS SMP" />}
         }
     </div>
-    <br /><br />
     @RenderBody()
     <script>$(".datepicker").datepicker({dateFormat:'dd/mm/yy'});</script>
-    <div id="container"></div>
 </body>
 </html>

@@ -1,0 +1,37 @@
+﻿@model MvcApplication.Models.chart
+
+@{
+    ViewBag.Title = "Load_Weighted_Average";
+}
+@model.Chart.
+<script>
+    $(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: '@model.chartTitle'
+            },
+            xAxis: {
+                labels: { rotation: -45 },
+                categories: [@Html.Raw(string.Join(",",dates.ToArray()))]
+            },
+            yAxis: {
+                title: {
+                    text: '@model.axisTitle'
+                }
+            },
+            series: [{
+                name: '@model.seriesName',
+                data: [@string.Join(",", series1.ToArray())]
+            }, {
+                type: 'spline', name: 'Seven Day @model.seriesName',
+                data: [@string.Join(",", series2.ToArray())]
+            }]
+        });
+        $(".datepicker").datepicker();
+
+    });
+</script>
+<h2>Load_Weighted_Average</h2>
