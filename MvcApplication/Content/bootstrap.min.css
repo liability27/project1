@@ -71,7 +71,7 @@ label{
     margin-bottom:5px;
 }
 .databaseStatus{
-    width:40%;
+    display:inline;
     margin:auto;
     text-align:left;
 }
