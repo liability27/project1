@@ -16,58 +16,60 @@
 <body>    
     <div id="head" ><a href="@Url.Content("~/")"><img src="@Url.Content("~/Content/Images/logo.png")"/></a><h1>Electricity Market Analyser</h1></div>
     <div id="nav">  
-        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        @{string id = "";}
+        @if (Model.seriesName == "Index") { id = "selected"; }
+         else { id = ""; }
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @id}))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
-            if (Model.seriesName == "Index")
-            {<input type="submit" name="Submit" value="HOME" id="selected" style="background-color:darkgray"/>}
-            else
-            {<input type="submit" name="Submit" value="HOME" />}
+            
+            <input type="submit" name="Submit" value="HOME" />
         }
-        @using (Html.BeginForm("LWA", "Home", FormMethod.Post))
+
+        @if (Model.seriesName == "LWA") { id="selected"; }
+            else { id = ""; }
+        @using (Html.BeginForm("LWA", "Home", FormMethod.Post, new { @id }))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
-            if (Model.seriesName == "LWA")
-            {<input type="submit" name="Submit" value="LWA" id="selected" style="background-color:darkgray" />}
-            else
+            
             {<input type="submit" name="Submit" value="LWA" />}
         }
-        @using (Html.BeginForm("Max_SMP", "Home", FormMethod.Post))
+        @if (Model.seriesName == "Max_SMP") { id="selected"; }
+            else { id = ""; }
+        @using (Html.BeginForm("Max_SMP", "Home", FormMethod.Post, new { @id}))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
-            if (Model.seriesName == "Max_SMP")
-            {<input type="submit" name="Submit" value="MAX SMP" id="selected" style="background-color:darkgray" />}
-            else
-            {<input type="submit" name="Submit" value="MAX SMP" />}
+            
+            {<input type="submit" name="Submit" value="MAX SMP"  />}
         }
-        @using (Html.BeginForm("Min_SMP", "Home", FormMethod.Post))
+        @if (Model.seriesName == "Min_SMP") { id="selected"; }
+            else { id = ""; }
+        @using (Html.BeginForm("Min_SMP", "Home", FormMethod.Post, new { @id }))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
-            if (Model.seriesName == "Min_SMP")
-            {<input type="submit" name="Submit" value="MIN SMP" id="selected" style="background-color:darkgray" />}
-            else
+            
             {<input type="submit" name="Submit" value="MIN SMP" />}
         }
-        @using (Html.BeginForm("Shadow_SMP", "Home", FormMethod.Post))
+        @if (Model.seriesName == "Shadow_SMP") { id="selected"; }
+            else { id = ""; }
+        @using (Html.BeginForm("Shadow_SMP", "Home", FormMethod.Post, new { @id}))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
-            if (Model.seriesName == "Shadow_SMP")
-            {<input type="submit" name="Submit" value="SHADOW VS SMP" id="selected" style="background-color:darkgray" />}
-            else
-            {<input type="submit" name="Submit" value="SHADOW VS SMP" />}
+            
+            {<input type="submit" name="Submit" value="SHADOW VS SMP"/>}
         }
-        @using (Html.BeginForm("Load_SMP", "Home", FormMethod.Post))
+        @if (Model.seriesName == "Load_SMP") { id="selected"; }
+        else { id = ""; }
+        @using (Html.BeginForm("Load_SMP", "Home", FormMethod.Post, new { @id }))
         {
             @Html.Hidden("startDate", Model.startDate.ToShortDateString(), new { id = "startform" })
             @Html.Hidden("endDate", Model.endDate.ToShortDateString(), new { id = "endform" })
-            if (Model.seriesName == "Load_SMP")
-            {<input type="submit" name="Submit" value="LOAD VS SMP" id="selected" style="background-color:darkgray" />}
-            else
+            
             {<input type="submit" name="Submit" value="LOAD VS SMP" />}
         }
     </div>
