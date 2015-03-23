@@ -15,6 +15,6 @@ namespace MvcApplication.Models
         public string seriesName = "";
         public DateTime startDate;
         public DateTime endDate;
-        public Boolean day = false;public string addedScript = "";
+        public Boolean day = false;
     }
 }
